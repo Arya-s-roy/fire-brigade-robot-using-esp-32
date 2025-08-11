@@ -106,6 +106,19 @@ void loop() {
     digitalWrite(PUMP_PIN, HIGH);
     delay(5000);
     digitalWrite(PUMP_PIN, LOW);
+    if (gps.location.isValid()) {
+      sendSMS(gps.location.lat(), gps.location.lng());
+      Serial.println("📍 SMS sent with location!");
+    } else {
+      Serial.println("⚠ GPS not fixed yet!");
+    }
+  } else {
+    Serial.println("✅ No fire detected");
+    stopMotors();
+  }
+
+  delay(1000);
+}
 
 
 

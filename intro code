@@ -8,3 +8,9 @@
 #define MOTOR_RIGHT_B 33
 #define PUMP_PIN 32
 
+// GPS & GSM pins
+#define GPS_RX 16  // GPS TX → ESP32 RX
+#define GPS_TX 17  // GPS RX → ESP32 TX
+#define GSM_RX 26  // SIM TX → ESP32 RX
+#define GSM_TX 27  // SIM RX → ESP32 TX
+

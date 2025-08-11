@@ -1,4 +1,4 @@
-// --- Pin Setup ---
+e// --- Pin Setup ---
 #define FLAME_SENSOR_PIN 34
 #define DHT_PIN 4
 #define DHTTYPE DHT22
@@ -65,6 +65,17 @@ void setup() {
   pinMode(MOTOR_RIGHT_F, OUTPUT);
   pinMode(MOTOR_RIGHT_B, OUTPUT);
   pinMode(PUMP_PIN, OUTPUT);
+
+  // GPS & GSM init
+  SerialGPS.begin(9600, SERIAL_8N1, GPS_RX, GPS_TX);
+  SerialGSM.begin(9600, SERIAL_8N1, GSM_RX, GSM_TX);
+
+  // TensorFlow Lite setup
+  resolver.AddFullyConnected();
+  resolver.AddRelu();
+  resolver.AddSoftmax();
+
+
 
 
 

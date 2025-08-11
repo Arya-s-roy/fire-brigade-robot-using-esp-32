@@ -85,6 +85,15 @@ void loop() {
   float temperature = dht.readTemperature();
   int flameValue = analogRead(FLAME_SENSOR_PIN) > 500 ? 1 : 0;
 
+  // Prepare ML input
+  float* input = interpreter->typed_input_tensor<float>(0);
+  input[0] = flameValue;
+  input[1] = temperature;
+
+  interpreter->Invoke();
+  float* output = interpreter->typed_output_tensor<float>(0);
+  int fireDetected = output[0] > 0.5 ? 1 : 0;
+
 
 
 

@@ -41,6 +41,20 @@ void stopMotors() {
   digitalWrite(MOTOR_RIGHT_F, LOW);
   digitalWrite(MOTOR_RIGHT_B, LOW);
 }
+// --- Send SMS ---
+void sendSMS(float lat, float lon) {
+  String locationLink = "https://maps.google.com/?q=" + String(lat, 6) + "," + String(lon, 6);
+
+  SerialGSM.println("AT+CMGF=1");  // SMS mode
+  delay(500);
+  SerialGSM.println("AT+CMGS=\"+911234567890\""); // Replace with your phone number
+  delay(500);
+  SerialGSM.print("🔥 Fire detected at location: ");
+  SerialGSM.println(locationLink);
+  SerialGSM.write(26); // Ctrl+Z to send
+  delay(1000);
+}
+
 
 
 

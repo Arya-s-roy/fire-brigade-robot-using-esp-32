@@ -19,3 +19,12 @@ TinyGPSPlus gps;
 HardwareSerial SerialGPS(1);
 HardwareSerial SerialGSM(2);
 
+// --- TensorFlow Lite Micro ---
+tflite::MicroErrorReporter micro_error_reporter;
+tflite::ErrorReporter* error_reporter = &micro_error_reporter;
+const tflite::Model* model = tflite::GetModel(fire_model);
+tflite::MicroInterpreter* interpreter;
+tflite::MicroOpResolver<5> resolver;
+constexpr int tensor_arena_size = 2 * 1024;
+uint8_t tensor_arena[tensor_arena_size];
+

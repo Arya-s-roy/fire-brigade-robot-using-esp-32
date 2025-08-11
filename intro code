@@ -28,3 +28,12 @@ tflite::MicroOpResolver<5> resolver;
 constexpr int tensor_arena_size = 2 * 1024;
 uint8_t tensor_arena[tensor_arena_size];
 
+// --- Motor Functions ---
+void moveForward() {
+  digitalWrite(MOTOR_LEFT_F, HIGH);
+  digitalWrite(MOTOR_LEFT_B, LOW);
+  digitalWrite(MOTOR_RIGHT_F, HIGH);
+  digitalWrite(MOTOR_RIGHT_B, LOW);
+}
+
+

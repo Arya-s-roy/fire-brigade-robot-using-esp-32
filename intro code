@@ -93,6 +93,15 @@ void loop() {
   interpreter->Invoke();
   float* output = interpreter->typed_output_tensor<float>(0);
   int fireDetected = output[0] > 0.5 ? 1 : 0;
+  // Update GPS data
+  while (SerialGPS.available() > 0) {
+    gps.encode(SerialGPS.read());
+  }
+
+  if (fireDetected) {
+    Serial.println("🔥 Fire detected! Moving and spraying...");
+    moveForward();
+    delay(3000);
 
 
 

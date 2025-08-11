@@ -35,5 +35,12 @@ void moveForward() {
   digitalWrite(MOTOR_RIGHT_F, HIGH);
   digitalWrite(MOTOR_RIGHT_B, LOW);
 }
+void stopMotors() {
+  digitalWrite(MOTOR_LEFT_F, LOW);
+  digitalWrite(MOTOR_LEFT_B, LOW);
+  digitalWrite(MOTOR_RIGHT_F, LOW);
+  digitalWrite(MOTOR_RIGHT_B, LOW);
+}
+
 
 

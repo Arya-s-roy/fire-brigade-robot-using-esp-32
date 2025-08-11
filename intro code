@@ -54,7 +54,17 @@ void sendSMS(float lat, float lon) {
   SerialGSM.write(26); // Ctrl+Z to send
   delay(1000);
 }
+// --- Setup ---
+void setup() {
+  Serial.begin(115200);
+  dht.begin();
 
+  pinMode(FLAME_SENSOR_PIN, INPUT);
+  pinMode(MOTOR_LEFT_F, OUTPUT);
+  pinMode(MOTOR_LEFT_B, OUTPUT);
+  pinMode(MOTOR_RIGHT_F, OUTPUT);
+  pinMode(MOTOR_RIGHT_B, OUTPUT);
+  pinMode(PUMP_PIN, OUTPUT);
 
 
 

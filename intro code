@@ -14,3 +14,8 @@
 #define GSM_RX 26  // SIM TX → ESP32 RX
 #define GSM_TX 27  // SIM RX → ESP32 TX
 
+DHT dht(DHT_PIN, DHTTYPE);
+TinyGPSPlus gps;
+HardwareSerial SerialGPS(1);
+HardwareSerial SerialGSM(2);
+

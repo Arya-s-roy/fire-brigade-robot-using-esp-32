@@ -74,6 +74,18 @@ void setup() {
   resolver.AddFullyConnected();
   resolver.AddRelu();
   resolver.AddSoftmax();
+  static tflite::MicroInterpreter static_interpreter(
+      model, resolver, tensor_arena, tensor_arena_size, error_reporter);
+  interpreter = &static_interpreter;
+  interpreter->AllocateTensors();
+}
+
+// --- Loop ---
+void loop() {
+  float temperature = dht.readTemperature();
+  int flameValue = analogRead(FLAME_SENSOR_PIN) > 500 ? 1 : 0;
+
+
 
 
 

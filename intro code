@@ -102,6 +102,11 @@ void loop() {
     Serial.println("🔥 Fire detected! Moving and spraying...");
     moveForward();
     delay(3000);
+    stopMotors();
+    digitalWrite(PUMP_PIN, HIGH);
+    delay(5000);
+    digitalWrite(PUMP_PIN, LOW);
+
 
 
 
